@@ -1,2 +1,2 @@
-# titanic-ml-project
-Titanic dataset üzerinde makine öğrenmesi ile hayatta kalma tahmini
+# titanic-project
+Titanic dataset  hayatta kalmayı etkileyen koşular 
