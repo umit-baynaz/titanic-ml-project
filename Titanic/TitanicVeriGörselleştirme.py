@@ -2,13 +2,13 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-# 1. TEMİZLİK: Önceki pencereleri kapat
+# 1. TEMİZLİK
 plt.close('all')
 
-# 2. VERİYİ YÜKLE (Senin dosya ismin 'titanic.csv')
+# 2. VERİYİ YÜKLE
 df = pd.read_csv('titanic.csv')
 
-# 3. TÜRKÇELEŞTİRME (Sunum Kalitesi İçin)
+# 3. TÜRKÇELEŞTİRME
 try:
     dict_survived = {0: 'Ölü', 1: 'Sağ'}
     dict_pclass = {1: '1. Sınıf (Lüks)', 2: '2. Sınıf (Orta)', 3: '3. Sınıf (Alt)'}
