@@ -22,6 +22,7 @@ try:
 except:
     pass
 
+
 # 4. YENİ BİR DEĞİŞKEN OLUŞTURALIM: "AİLE BÜYÜKLÜĞÜ"
 # Kardeş + Ebeveyn + Kendisi = Aile Büyüklüğü
 df['Aile_Buyuklugu'] = df['SibSp'] + df['Parch'] + 1
