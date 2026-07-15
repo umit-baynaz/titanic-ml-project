@@ -1,6 +1,6 @@
 Model,CV_Mean,CV_Std,Test_Accuracy,Best_Params
-Logistic Regression,1.0,0.0,1.0,"{'C': 0.1, 'penalty': 'l2', 'solver': 'lbfgs'}"
-Random Forest,1.0,0.0,1.0,"{'max_depth': 5, 'min_samples_leaf': 1, 'min_samples_split': 2, 'n_estimators': 100}"
-Gradient Boosting,1.0,0.0,1.0,"{'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 100, 'subsample': 0.8}"
-SVM,1.0,0.0,1.0,"{'C': 0.1, 'gamma': 'scale', 'kernel': 'linear'}"
-KNN,0.9881,0.0174,0.9881,"{'metric': 'manhattan', 'n_neighbors': 11, 'weights': 'distance'}"
+Random Forest,0.8344,0.0323,0.7989,"{'max_depth': 15, 'min_samples_leaf': 2, 'min_samples_split': 2, 'n_estimators': 200}"
+Gradient Boosting,0.8343,0.014,0.8268,"{'learning_rate': 0.01, 'max_depth': 5, 'n_estimators': 200, 'subsample': 0.8}"
+Logistic Regression,0.8301,0.007,0.8045,"{'C': 0.01, 'penalty': 'l2', 'solver': 'lbfgs'}"
+KNN,0.8245,0.0217,0.7709,"{'metric': 'manhattan', 'n_neighbors': 5, 'weights': 'uniform'}"
+SVM,0.8217,0.0235,0.8268,"{'C': 1, 'gamma': 'scale', 'kernel': 'rbf'}"
