@@ -1,0 +1,2 @@
+Model,Accuracy,Precision,Recall,F1_Score,Accuracy_Pct,Precision_Pct,Recall_Pct,F1_Score_Pct
+Logistic Regression,1.0,1.0,1.0,1.0,100.0,100.0,100.0,100.0

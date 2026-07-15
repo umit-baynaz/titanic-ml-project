@@ -1,0 +1,7 @@
+Pclass,Sex,Toplam_Yolcu,Hayatta_Kalan,Hayatta_Kalma_Orani,Ortalama_Yas,Ortalama_Ucret,Hayatta_Kalma_Orani_Pct,Sinif_Adi,Cinsiyet
+1,female,50,50,1.0,41.32,115.591168,100.0,1. Sinif (Luks),Kadin
+1,male,57,0,0.0,40.70175438596491,75.58655087719298,0.0,1. Sinif (Luks),Erkek
+2,female,30,30,1.0,24.363999999999997,26.438750000000002,100.0,2. Sinif (Orta),Kadin
+2,male,63,0,0.0,30.753968253968253,20.18465396825397,0.0,2. Sinif (Orta),Erkek
+3,female,72,72,1.0,22.745416666666667,13.735129166666667,100.0,3. Sinif (Alt),Kadin
+3,male,146,0,0.0,24.34527397260274,11.799428767123288,0.0,3. Sinif (Alt),Erkek
