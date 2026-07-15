@@ -1,244 +1,88 @@
-# 🚢 Titanic ML Project - Hayatta Kalma Tahmini
+# Titanic Veri Analizi ve Görselleştirme Projesi
 
-Titanic veri seti üzerinde kapsamlı makine öğrenmesi analizi. Bu proje, 1912 yılında batan RMS Titanic gemisindeki yolcuların hayatta kalma olasılığını tahmin eden bir ML pipeline'ı içerir.
+Bu proje, Titanic yolcu veri seti üzerinde uçtan uca veri analizi süreçlerini (veri temizleme, Keşifsel Veri Analizi - EDA, istatistiksel analiz, görselleştirme ve raporlama) içermektedir.
 
-![Python](https://img.shields.io/badge/Python-3.14-blue?logo=python&logoColor=white)
-![scikit-learn](https://img.shields.io/badge/scikit--learn-1.8-orange?logo=scikit-learn&logoColor=white)
-![Power BI](https://img.shields.io/badge/Power%20BI-Dashboard-yellow?logo=powerbi&logoColor=white)
-![Status](https://img.shields.io/badge/Status-Tamamlandı-green)
+## 📌 Proje Özeti
 
----
-
-## 📋 İçindekiler
-
-- [Proje Hakkında](#-proje-hakkında)
-- [Proje Yapısı](#-proje-yapısı)
-- [Kurulum](#-kurulum)
-- [Kullanım](#-kullanım)
-- [Analiz Sonuçları](#-analiz-sonuçları)
-- [ML Modelleri](#-ml-modelleri)
-- [Power BI Raporu](#-power-bi-raporu)
-- [Görseller](#-görseller)
+- Titanik yolcu verisini **Excel** ortamında inceleyerek veri temizleme ve ön işleme süreçlerini gerçekleştirdim. Titanik veri setini **Python**'da veri görselleştirmesi yapıldı.
+- **Python (Pandas ve NumPy)** kullanarak eksik verileri analiz ettim, veri dönüşümleri uyguladım ve istatistiksel analizler gerçekleştirdim.
+- **Power BI** kullanarak etkileşimli dashboard oluşturdum; hayatta kalma oranları, yolcu sınıfları, yaş dağılımı ve cinsiyet bazlı analizleri raporladım.
+- Veri analizi sürecinde veri temizleme, keşifsel veri analizi (EDA), görselleştirme ve raporlama aşamalarını **uçtan uca yönettim.**
 
 ---
 
-## 🎯 Proje Hakkında
-
-Bu proje, Kaggle Titanic veri seti üzerinde uçtan uca bir veri bilimi pipeline'ı gerçekleştirir:
-
-1. **Veri Temizleme** — Eksik verilerin akıllı doldurulması
-2. **Keşifsel Analiz (EDA)** — 8 profesyonel görselleştirme
-3. **Feature Engineering** — 15 özellik çıkarımı
-4. **Model Eğitimi** — 5 farklı ML algoritması karşılaştırması
-5. **Model Değerlendirme** — ROC, Confusion Matrix, Feature Importance
-6. **Power BI Export** — Dashboard için hazır CSV dosyaları
-
-### Kullanılan Teknolojiler
-
-| Araç | Kullanım |
-|------|----------|
-| **Python 3.14** | Veri analizi ve modelleme |
-| **pandas & numpy** | Veri işleme |
-| **scikit-learn** | ML modelleri |
-| **XGBoost** | Gradient Boosting |
-| **matplotlib & seaborn** | Görselleştirme |
-| **Power BI** | İnteraktif dashboard |
-
----
-
-## 📁 Proje Yapısı
+## 📂 Proje Dosya Yapısı
 
 ```
 titanic-ml-project/
-├── README.md                    # Bu dosya
-├── requirements.txt             # Python bağımlılıkları
-├── .gitignore                   # Git ignore
-│
 ├── data/
-│   ├── raw/                     # Ham veri
-│   │   └── train.csv
-│   ├── processed/               # İşlenmiş veri
-│   │   ├── train_cleaned.csv
-│   │   ├── train_engineered.csv
-│   │   └── ml_features.csv
-│   └── powerbi/                 # Power BI veri dosyaları
-│       ├── full_dataset_powerbi.csv
-│       ├── survival_summary.csv
-│       ├── class_gender_survival.csv
-│       ├── model_comparison.csv
-│       └── ... (15+ CSV dosyası)
+│   ├── raw/
+│   │   └── train.csv                      # Ham Veri Seti
+│   ├── processed/
+│   │   ├── train_cleaned.xlsx             # Excel ortamında incelemek için temizlenmiş veri
+│   │   └── train_cleaned.csv              # Python analizleri için temizlenmiş veri
+│   └── powerbi/                           # Power BI Dashboard verileri (Excel formatında)
+│       ├── 01_PowerBI_Ana_Veri.xlsx
+│       ├── 02_PowerBI_Cinsiyet_Analizi.xlsx
+│       ├── 03_PowerBI_Sinif_Analizi.xlsx
+│       └── 04_PowerBI_Yas_Dagilimi.xlsx
 │
-├── src/                         # Kaynak kodlar
-│   ├── 01_veri_temizleme.py     # Veri temizleme
-│   ├── 02_kesifsel_analiz.py    # EDA görselleştirme
-│   ├── 03_feature_engineering.py # Özellik mühendisliği
-│   ├── 04_model_egitimi.py      # ML model eğitimi
-│   ├── 05_model_degerlendirme.py # Model değerlendirme
-│   └── 06_powerbi_export.py     # Power BI export
+├── reports/
+│   └── figures/                           # Python (Matplotlib/Seaborn) Görselleştirmeleri
+│       ├── 01_sinif_cinsiyet_analizi.png
+│       ├── 02_yas_dagilimi.png
+│       └── 03_yas_gruplari_analizi.png
 │
-├── models/                      # Eğitilmiş modeller
-│   ├── best_model.pkl
-│   ├── scaler.pkl
-│   └── model_info.pkl
+├── src/                                   # Python Kaynak Kodları
+│   ├── 01_veri_temizleme.py               # Eksik veri analizi ve dönüşümler
+│   ├── 02_kesifsel_analiz.py              # İstatistiksel hesaplamalar ve görselleştirme
+│   └── 03_powerbi_hazirlik.py             # Raporlama verilerinin oluşturulması
 │
-├── reports/figures/             # Analiz grafikleri (PNG)
-│   ├── survival_overview.png
-│   ├── age_distribution.png
-│   ├── class_gender_survival.png
-│   ├── correlation_heatmap.png
-│   ├── model_comparison.png
-│   ├── confusion_matrix.png
-│   ├── roc_curve.png
-│   ├── feature_importance.png
-│   └── ...
-│
-└── powerbi/                     # Power BI kılavuzu
-    └── POWERBI_KILAVUZ.md
+└── README.md
 ```
 
 ---
 
-## ⚙️ Kurulum
+## 🛠️ Kullanılan Araçlar ve Teknolojiler
 
-### Gereksinimler
-- Python 3.10+
-- pip
+| Araç | Kullanım Amacı |
+|------|----------------|
+| **Python** | Veri analizi kodlaması |
+| **Pandas & NumPy** | Veri manipülasyonu, eksik veri analizi, istatistikler |
+| **Matplotlib & Seaborn** | Keşifsel Veri Analizi (EDA) görselleştirmeleri |
+| **Excel** | Veri ön işleme incelemesi ve tablo yapıları |
+| **Power BI** | Etkileşimli raporlama (Dashboard) |
 
-### Adımlar
+---
 
+## 🚀 Analiz Adımları ve Kod Çalıştırma
+
+Projede gerçekleştirilen aşamaları kendi ortamınızda tekrar etmek için terminalinizde aşağıdaki komutları sırasıyla çalıştırabilirsiniz:
+
+### 1. Veri Temizleme ve Ön İşleme
 ```bash
-# 1. Depoyu klonlayın
-git clone https://github.com/KULLANICIADI/titanic-ml-project.git
-cd titanic-ml-project
-
-# 2. Bağımlılıkları kurun
-pip install -r requirements.txt
-
-# 3. Pipeline'ı çalıştırın (sırasıyla)
 python src/01_veri_temizleme.py
+```
+*Bu aşamada Pandas ve NumPy ile eksik veriler tespit edilir, yaş ve liman gibi eksik alanlar istatistiksel yöntemlerle doldurulur ve sonuçlar Excel (.xlsx) ortamına aktarılır.*
+
+### 2. İstatistiksel Analiz ve Görselleştirme (EDA)
+```bash
 python src/02_kesifsel_analiz.py
-python src/03_feature_engineering.py
-python src/04_model_egitimi.py
-python src/05_model_degerlendirme.py
-python src/06_powerbi_export.py
 ```
+*Bu aşamada hayatta kalma oranları, cinsiyet, sınıf ve yaş bazlı dağılımlar hesaplanır. Üretilen grafikler `reports/figures/` klasörüne otomatik kaydedilir.*
 
----
-
-## 🚀 Kullanım
-
-### Tek Komutla Tüm Pipeline
-
-Windows (PowerShell):
-```powershell
-$env:PYTHONIOENCODING='utf-8'
-@("01_veri_temizleme", "02_kesifsel_analiz", "03_feature_engineering", "04_model_egitimi", "05_model_degerlendirme", "06_powerbi_export") | ForEach-Object { python "src/$_.py" }
+### 3. Power BI Raporlama Hazırlığı
+```bash
+python src/03_powerbi_hazirlik.py
 ```
-
-### Adım Adım
-
-| Adım | Script | Açıklama |
-|------|--------|----------|
-| 1 | `01_veri_temizleme.py` | Eksik veri doldurma, tip düzeltme |
-| 2 | `02_kesifsel_analiz.py` | İstatistikler ve 8 grafik |
-| 3 | `03_feature_engineering.py` | 15 yeni özellik türetme |
-| 4 | `04_model_egitimi.py` | 5 model eğitimi + GridSearch |
-| 5 | `05_model_degerlendirme.py` | Metrikler ve performans grafikleri |
-| 6 | `06_powerbi_export.py` | Power BI CSV dosyaları |
+*Bu aşamada Power BI'da oluşturulacak etkileşimli dashboard için özel olarak filtrelenmiş yaş, cinsiyet, sınıf ve ana veri rapor tabloları Excel formatında dışa aktarılır.*
 
 ---
 
-## 📊 Analiz Sonuçları
+## 📊 Öne Çıkan Bulgular
 
-### Temel Bulgular
-
-| Metrik | Değer |
-|--------|-------|
-| Toplam Yolcu | 418 |
-| Hayatta Kalma Oranı | %36.4 |
-| Ortalama Yaş | 29.3 |
-| Ortalama Bilet Ücreti | $35.56 |
-
-### Önemli Keşifler
-
-- 🚺 **Kadınlar** erkeklere göre çok daha yüksek hayatta kalma oranına sahip
-- 💰 **1. sınıf** yolcuların hayatta kalma şansı 3. sınıftan çok daha fazla
-- 👨‍👩‍👧‍👦 **2-4 kişilik aileler** en yüksek hayatta kalma oranına sahip
-- 🚢 **Cherbourg** limanından binen yolcuların hayatta kalma oranı en yüksek
-- 👶 **Çocuklar** (0-12 yaş) diğer yaş gruplarına göre daha şanslı
-
----
-
-## 🤖 ML Modelleri
-
-### Karşılaştırılan Modeller
-
-| Model | CV Accuracy | Test Accuracy |
-|-------|------------|---------------|
-| Logistic Regression | ~%78-82 | ~%78-82 |
-| Random Forest | ~%80-84 | ~%79-83 |
-| Gradient Boosting | ~%80-84 | ~%79-83 |
-| SVM | ~%78-82 | ~%78-82 |
-| KNN | ~%75-80 | ~%75-80 |
-
-> **Not:** Yukarıdaki değerler yaklaşıktır. Kesin sonuçlar `data/processed/model_comparison.csv` dosyasında bulunabilir.
-
-### Özellik Mühendisliği (15 Özellik)
-
-```
-Pclass, Age, SibSp, Parch, Fare,
-Sex_Encoded, Embarked_Encoded, Title_Encoded,
-FamilySize, IsAlone, HasCabin, Deck_Encoded,
-AgeBand_Encoded, FareBand_Encoded, FamilyCategory_Encoded
-```
-
----
-
-## 📈 Power BI Raporu
-
-Power BI Dashboard 5 sayfadan oluşur:
-
-| Sayfa | İçerik |
-|-------|--------|
-| **Genel Bakış** | KPI kartları, pasta grafiği, sınıf dağılımı |
-| **Demografik Analiz** | Cinsiyet/sınıf/yaş bazlı hayatta kalma |
-| **Aile & Sosyal** | Aile büyüklüğü, yalnız yolcu, biniş limanı |
-| **Finansal Analiz** | Bilet ücreti dağılımları |
-| **ML Sonuçları** | Model karşılaştırma, feature importance |
-
-📖 Detaylı kılavuz: [`powerbi/POWERBI_KILAVUZ.md`](powerbi/POWERBI_KILAVUZ.md)
-
----
-
-## 🖼️ Görseller
-
-Tüm grafikler `reports/figures/` klasöründe PNG formatında bulunabilir:
-
-- `survival_overview.png` — Genel hayatta kalma analizi
-- `age_distribution.png` — Yaş dağılımı
-- `class_gender_survival.png` — Sınıf ve cinsiyet çapraz analizi
-- `correlation_heatmap.png` — Korelasyon ısı haritası
-- `family_analysis.png` — Aile büyüklüğü analizi
-- `embarked_analysis.png` — Biniş limanı analizi
-- `violin_age.png` — Yaş keman grafiği
-- `fare_distribution.png` — Bilet ücreti dağılımı
-- `model_comparison.png` — Model performans karşılaştırması
-- `confusion_matrix.png` — Karışıklık matrisi
-- `roc_curve.png` — ROC eğrisi
-- `feature_importance.png` — Özellik önem sıralaması
-
----
-
-## 📝 Lisans
-
-Bu proje eğitim amaçlıdır. Veri seti [Kaggle Titanic Competition](https://www.kaggle.com/c/titanic) kaynağından alınmıştır.
-
----
-
-## 🤝 Katkıda Bulunma
-
-1. Fork edin
-2. Feature branch oluşturun (`git checkout -b feature/yeniOzellik`)
-3. Commit edin (`git commit -m 'Yeni özellik eklendi'`)
-4. Push edin (`git push origin feature/yeniOzellik`)
-5. Pull Request açın
+İstatistiksel analizler sonucunda elde edilen temel bulgular:
+1. **Genel Hayatta Kalma:** Gemideki yolcuların yalnızca **%38.4**'ü hayatta kalmıştır.
+2. **Cinsiyet Etkisi:** Kadınların hayatta kalma oranı **%74.2** iken, bu oran erkeklerde **%18.9**'da kalmıştır.
+3. **Yolcu Sınıfı Etkisi:** 1. sınıf yolcuların hayatta kalma ihtimali (%63.0), 3. sınıf yolculara göre (%24.2) çok daha yüksektir.
+4. **Yaş Dağılımı:** Gemideki yolcuların yaş ortalaması 29.1 olarak hesaplanmıştır.
